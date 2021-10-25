@@ -1,0 +1,16 @@
+<section class="body">
+    <section class="body-left">
+        <a (click)="changePage('sales')">Sales</a>
+        <a (click)="changePage('products')">Products</a>
+        <a (click)="changePage('countries')">Countries</a>
+        <a (click)="changePage('currencies')">Currencies</a>
+        <a (click)="changePage('region')">Region</a>
+    </section>
+    <section class="body-right">
+        <app-sales *ngIf='page==="sales"'></app-sales>
+        <app-products *ngIf='page==="products"'></app-products>
+        <app-countries *ngIf='page==="countries"'></app-countries>
+        <app-currencies *ngIf='page==="currencies"'></app-currencies>
+        <app-region *ngIf='page==="region"'></app-region>
+    </section>
+</section>

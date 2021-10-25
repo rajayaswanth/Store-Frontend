@@ -1,0 +1,14 @@
+<section class="table-body">
+    <table>
+        <tr>
+            <th>Currency Name</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let item of currencies;">
+            <td>{{item.name}}</td>
+            <td class="actions">
+                <i class="fad fa-edit"></i>
+            </td>
+        </tr>
+    </table>
+</section>
