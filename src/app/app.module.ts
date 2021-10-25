@@ -10,6 +10,7 @@ import { CountriesComponent } from './countries/countries.component';
 import { CurrenciesComponent } from './currencies/currencies.component';
 import { RegionComponent } from './region/region.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

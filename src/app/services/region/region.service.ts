@@ -14,4 +14,9 @@ export class RegionService {
     return this.httpClient.get(this.getRegionUrl);
   }
 
+  public addRegion(requestBody:any) {
+    const body = requestBody;
+    return this.httpClient.post(this.getRegionUrl, body);
+  }
+
 }

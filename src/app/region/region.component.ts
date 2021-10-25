@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { RegionService } from '../services/region/region.service';
 
 @Component({
@@ -20,6 +21,14 @@ export class RegionComponent implements OnInit {
     this.regionService.getRegions().subscribe((data: any) => {
       console.log(data);
       this.regions = data;
+    })
+  }
+
+  onSubmit(form: NgForm) {
+    console.log('Your form data : ', form.value);
+    this.regionService.addRegion(form.value).subscribe((data: any) => {
+      console.log(data);
+      this.regions.push(data);
     })
   }
 

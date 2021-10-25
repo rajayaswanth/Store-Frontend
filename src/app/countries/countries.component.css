@@ -20,3 +20,16 @@ tr:nth-child(even) {
     justify-content: center;
     padding-top: 4%;
 }
+
+.add {
+    font-size: 30px;
+    float: right;
+    margin: 0px 2%;
+    cursor: pointer;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 8% 0px;
+}

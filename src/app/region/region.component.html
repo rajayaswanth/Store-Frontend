@@ -1,14 +1,41 @@
+<!-- Button trigger modal -->
+<p type="button" class="add" data-toggle="modal" data-target="#myModal">
+    +
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Region</h4>
+            </div>
+            <div class="modal-body">
+                <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+                    <input type="text" name="name" placeholder="Region name" ngModel>
+                    <br />
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
 <section class="table-body">
-        <table>
-            <tr>
-                <th>Region Name</th>
-                <th>Actions</th>
-            </tr>
-            <tr *ngFor="let item of regions;">
-                <td>{{item.name}}</td>
-                <td class="actions">
-                    <i class="fad fa-edit"></i>
-                </td>
-            </tr>
-        </table>
+    <table>
+        <tr>
+            <th>Region Name</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let item of regions;">
+            <td>{{item.name}}</td>
+            <td class="actions">
+                <i class="fas fa-edit"></i>
+                <i class="fas fa-trash-alt"></i>
+            </td>
+        </tr>
+    </table>
 </section>
