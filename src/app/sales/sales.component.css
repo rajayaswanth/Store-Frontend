@@ -29,7 +29,9 @@ tr:nth-child(even) {
 }
 
 .actions {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 14% 0px;
+    text-align: center;
+}
+
+.actions i {
+    margin: 0px 10%;
 }

@@ -14,4 +14,13 @@ export class ProductService {
     return this.httpClient.get(this.getProductUrl);
   }
 
+  public addProduct(requestBody:any) {
+    const body = requestBody;
+    return this.httpClient.post(this.getProductUrl, body);
+  }
+
+  public deleteProduct(id:any) {
+    return this.httpClient.delete(this.getProductUrl+'/'+id, {responseType: 'text'});
+  }
+
 }

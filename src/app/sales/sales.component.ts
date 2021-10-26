@@ -18,7 +18,6 @@ export class SalesComponent implements OnInit {
 
   getSales() {
     this.salesService.getSales().subscribe((data: any) => {
-      console.log(data);
       this.sales = data;
     })
   }
