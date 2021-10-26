@@ -29,6 +29,6 @@
     cursor: pointer;
 }
 
-app-sales, app-products, app-region, app-countries, app-currencies {
+app-sales, app-products, app-region, app-countries, app-currencies, app-customers {
     width: 100%;
 }

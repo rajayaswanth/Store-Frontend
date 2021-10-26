@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CountriesService } from '../services/countries/countries.service';
 import { RegionService } from '../services/region/region.service';
@@ -14,6 +14,8 @@ export class CountriesComponent implements OnInit {
   regions:any=[];
   selectedValue = null;
 
+  @ViewChild('closebutton') closebutton: any;
+
   constructor(private countryService: CountriesService, private regionService:RegionService, public fb: FormBuilder) { }
 
   registrationForm = this.fb.group({
@@ -22,12 +24,12 @@ export class CountriesComponent implements OnInit {
   })
 
   changeRegion(c:any) {
-    this.name?.setValue(c.target.value, {
+    this.region?.setValue(c.target.value, {
       onlySelf: true
     })
   }
 
-  get name() {
+  get region() {
     return this.registrationForm.get('region');
   }
 
@@ -50,6 +52,7 @@ export class CountriesComponent implements OnInit {
   }
 
   addCountry() {
+    this.closebutton.nativeElement.click();
       if (!this.registrationForm.valid) {
         console.log("error")
       } else {

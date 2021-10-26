@@ -1,6 +1,7 @@
 <section class="body">
     <section class="body-left">
         <a (click)="changePage('sales')">Sales</a>
+        <a (click)="changePage('customers')">Customers</a>
         <a (click)="changePage('products')">Products</a>
         <a (click)="changePage('countries')">Countries</a>
         <a (click)="changePage('currencies')">Currencies</a>
@@ -8,6 +9,7 @@
     </section>
     <section class="body-right">
         <app-sales *ngIf='page==="sales"'></app-sales>
+        <app-customers *ngIf='page==="customers"'></app-customers>
         <app-products *ngIf='page==="products"'></app-products>
         <app-countries *ngIf='page==="countries"'></app-countries>
         <app-currencies *ngIf='page==="currencies"'></app-currencies>

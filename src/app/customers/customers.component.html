@@ -1,0 +1,60 @@
+<!-- Button trigger modal -->
+<p type="button" class="add" data-toggle="modal" data-target="#myModal">
+    +
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button #closebutton type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Customer</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Form starts -->
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addCustomer()">
+                    <input type="text" placeholder="First name" formControlName="firstName">
+                    <br />
+                    <input type="text" placeholder="Last name" formControlName="lastName">
+                    <br />
+                    <input type="text" placeholder="Email" formControlName="email">
+                    <br />
+                    <input type="text" placeholder="Phone" formControlName="phone">
+                    <br />
+                    <select (change)="changeCountry($event)" formControlName="country">
+                        <option value="">Choose Country</option>
+                        <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                    </select>
+                    <br />
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form><!-- Form ends -->
+            </div>
+        </div>
+
+    </div>
+</div>
+<section class="table-body">
+    <table>
+        <tr>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Country</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let item of customers;">
+            <td>{{item.firstName}} {{item.lastName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.country.name}}</td>
+            <td class="actions">
+                <a class="a-update" ><i class="fas fa-edit"></i></a>
+                <a class="a-delete" (click)="deleteCustomer(item.id)"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+    </table>
+</section>

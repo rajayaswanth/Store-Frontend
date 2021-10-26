@@ -1,0 +1,54 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.table-body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 4%;
+}
+
+.add {
+    font-size: 30px;
+    float: right;
+    margin: 0px 2%;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-delete {
+    color: red;
+    cursor: pointer;
+}
+
+.a-update {
+    color: blue;
+    cursor: pointer;
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions i {
+    margin: 0px 10%;
+}

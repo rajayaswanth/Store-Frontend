@@ -11,6 +11,7 @@ import { CurrenciesComponent } from './currencies/currencies.component';
 import { RegionComponent } from './region/region.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     CountriesComponent,
     CurrenciesComponent,
-    RegionComponent
+    RegionComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,
