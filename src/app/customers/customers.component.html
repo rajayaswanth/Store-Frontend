@@ -15,7 +15,7 @@
             </div>
             <div class="modal-body">
                 <!-- Form starts -->
-                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addCustomer()">
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addCustomer()" autocomplete="off">
                     <input type="text" placeholder="First name" formControlName="firstName">
                     <br />
                     <input type="text" placeholder="Last name" formControlName="lastName">

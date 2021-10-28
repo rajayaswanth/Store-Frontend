@@ -4,16 +4,17 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class SalesService {
+export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private getSalesUrl = "/api/sales";
-  headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"));
+  private userUrl = "/api/users";
+  headers = new HttpHeaders();
 
-  public getSales(){
+  public addUser(requestBody:any) {
     this.headers.set("content-type","application/json");
-    return this.httpClient.get(this.getSalesUrl, { 'headers': this.headers });
+    const body = requestBody;
+    return this.httpClient.post(this.userUrl+'/add', body, { 'headers': this.headers });
   }
 
 }

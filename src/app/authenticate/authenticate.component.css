@@ -1,0 +1,28 @@
+.body {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: row;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 2%;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+span {
+    display: flex;
+    margin-top: 2%;
+}

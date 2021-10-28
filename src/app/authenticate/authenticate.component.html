@@ -1,0 +1,24 @@
+<section class="body">
+    <form *ngIf="active==='login'" class="form" #myform="ngForm" (ngSubmit)="authenticate(myform)" autocomplete="off">
+        <h1>Signin</h1>
+        <input type="text" name="username" placeholder="User Name" ngModel>
+        <br />
+        <input type="password" name="password" placeholder="Password" ngModel>
+        <br />
+        <button type="submit" class="btn btn-primary">Signin</button>
+        <span>Don't have an account? &nbsp;
+        <a (click)="updateActive('register')"><p>Signup</p></a></span>
+    </form>
+    <form *ngIf="active==='register'" class="form" #myform="ngForm" (ngSubmit)="register(myform)" autocomplete="off">
+        <h1>Signup</h1>
+        <input type="text" name="name" placeholder="Name" ngModel>
+        <br />
+        <input type="text" name="email" placeholder="Email" ngModel>
+        <br />
+        <input type="password" name="password" placeholder="Password" ngModel>
+        <br />
+        <button type="submit" class="btn btn-primary">Signup</button>
+        <span>Already have an account? &nbsp;
+        <a (click)="updateActive('login')"><p>Signin</p></a></span>
+    </form>
+</section>

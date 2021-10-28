@@ -9,20 +9,22 @@ export class CountriesService {
   constructor(private httpClient: HttpClient) { }
 
   private getCountryUrl = "/api/country";
+  headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"));
 
   public getCountries(){
-    return this.httpClient.get(this.getCountryUrl);
+    this.headers.set("content-type","application/json");
+    return this.httpClient.get(this.getCountryUrl, { 'headers': this.headers });
   }
 
   public addCountry(requestBody:any) {
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
-    let options = { headers: headers };
+    this.headers.set("content-type","application/json");
     const body = requestBody;
-    return this.httpClient.post(this.getCountryUrl, body, options);
+    return this.httpClient.post(this.getCountryUrl, body, { 'headers': this.headers });
   }
 
   public deleteCountry(id:any) {
-    return this.httpClient.delete(this.getCountryUrl+'/'+id, {responseType: 'text'});
+    this.headers.set("content-type","application/json");
+    return this.httpClient.delete(this.getCountryUrl+'/'+id, {responseType: 'text', headers: this.headers});
   }
 
 }

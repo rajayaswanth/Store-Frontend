@@ -14,7 +14,7 @@
                 <h4 class="modal-title">Add Currency</h4>
             </div>
             <div class="modal-body">
-                <form class="form" #myform="ngForm" (ngSubmit)="addCurrency(myform)">
+                <form class="form" #myform="ngForm" (ngSubmit)="addCurrency(myform)" autocomplete="off">
                     <input type="text" name="name" placeholder="Currency name" ngModel>
                     <br />
                     <button type="submit" class="btn btn-primary">Add</button>

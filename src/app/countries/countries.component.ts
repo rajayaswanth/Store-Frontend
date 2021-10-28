@@ -46,7 +46,6 @@ export class CountriesComponent implements OnInit {
 
   getCountries() {
     this.countryService.getCountries().subscribe((data: any) => {
-      console.log(data);
       this.countries = data;
     })
   }

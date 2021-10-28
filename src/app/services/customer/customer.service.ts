@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,18 +10,22 @@ export class CustomerService {
 
   private getCustomerUrl = "/api/customer";
   private deleteCustomerUrl = "/api/customer/";
+  headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"));
 
   public getCustomers(){
-    return this.httpClient.get(this.getCustomerUrl);
+    this.headers.set("content-type","application/json");
+    return this.httpClient.get(this.getCustomerUrl, { 'headers': this.headers });
   }
 
   public addCustomer(requestBody:any) {
+    this.headers.set("content-type","application/json");
     const body = requestBody;
-    return this.httpClient.post(this.getCustomerUrl, body);
+    return this.httpClient.post(this.getCustomerUrl, body, { 'headers': this.headers });
   }
 
   public deleteCustomer(id:any) {
-    return this.httpClient.delete(this.deleteCustomerUrl+id, {responseType: 'text'});
+    this.headers.set("content-type","application/json");
+    return this.httpClient.delete(this.deleteCustomerUrl+id, {responseType: 'text', 'headers': this.headers });
   }
 
 }

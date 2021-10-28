@@ -14,7 +14,7 @@
                 <h4 class="modal-title">Add Product</h4>
             </div>
             <div class="modal-body">
-                <form class="form" #myform="ngForm" (ngSubmit)="addProduct(myform)">
+                <form class="form" #myform="ngForm" (ngSubmit)="addProduct(myform)" autocomplete="off">
                     <input type="text" name="name" placeholder="Product name" ngModel>
                     <br />
                     <input type="text" name="shortDescription" placeholder="Short Description" ngModel>

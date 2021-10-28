@@ -12,6 +12,9 @@ import { RegionComponent } from './region/region.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomersComponent } from './customers/customers.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { StoreComponent } from './store/store.component';
+import { AuthGuard } from './services/AuthGuard';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { CustomersComponent } from './customers/customers.component';
     CountriesComponent,
     CurrenciesComponent,
     RegionComponent,
-    CustomersComponent
+    CustomersComponent,
+    AuthenticateComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { CustomersComponent } from './customers/customers.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
