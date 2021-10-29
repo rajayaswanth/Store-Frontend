@@ -3,3 +3,8 @@
 body {
     margin: 0px;
 }
+
+form input,select {
+    padding: 1%;
+    width: 50%;
+}

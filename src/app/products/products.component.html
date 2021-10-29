@@ -14,18 +14,47 @@
                 <h4 class="modal-title">Add Product</h4>
             </div>
             <div class="modal-body">
-                <form class="form" #myform="ngForm" (ngSubmit)="addProduct(myform)" autocomplete="off">
-                    <input type="text" name="name" placeholder="Product name" ngModel>
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addProduct()" autocomplete="off">
+                    <input type="text" formControlName="name" placeholder="Product name">
                     <br />
-                    <input type="text" name="shortDescription" placeholder="Short Description" ngModel>
+                    <input type="text" formControlName="shortDescription" placeholder="Short Description">
                     <br />
-                    <input type="text" name="fullDescription" placeholder="Full Description" ngModel>
+                    <input type="text" formControlName="fullDescription" placeholder="Full Description">
                     <br />
-                    <input type="number" name="size" placeholder="Size" ngModel>
+                    <input type="number" formControlName="size" placeholder="Size">
                     <br />
-                    <input type="text" name="colour" placeholder="colour" ngModel>
+                    <input type="text" formControlName="colour" placeholder="colour">
                     <br />
                     <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myUpdateModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button #closedeletebutton type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Product</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="updateProduct()" autocomplete="off">
+                    <input type="text" formControlName="name" placeholder="Product name">
+                    <br />
+                    <input type="text" formControlName="shortDescription" placeholder="Short Description">
+                    <br />
+                    <input type="text" formControlName="fullDescription" placeholder="Full Description">
+                    <br />
+                    <input type="number" formControlName="size" placeholder="Size">
+                    <br />
+                    <input type="text" formControlName="colour" placeholder="colour">
+                    <br />
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
@@ -47,7 +76,7 @@
             <td>{{item.size}}</td>
             <td>{{item.colour}}</td>
             <td class="actions">
-                <a class="a-update" ><i class="fas fa-edit"></i></a>
+                <a class="a-update" (click)="updateForm(item)" data-toggle="modal" data-target="#myUpdateModal"><i class="fas fa-edit"></i></a>
                 <a class="a-delete" (click)="deleteProduct(item.id)"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>

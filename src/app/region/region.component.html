@@ -14,10 +14,31 @@
                 <h4 class="modal-title">Add Region</h4>
             </div>
             <div class="modal-body">
-                <form class="form" #myform="ngForm" (ngSubmit)="addRegion(myform)" autocomplete="off">
-                    <input type="text" name="name" placeholder="Region name" ngModel>
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addRegion()" autocomplete="off">
+                    <input type="text" formControlName="name" placeholder="Region name">
                     <br />
                     <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div #mymodal class="modal fade" id="myUpdateModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button #closedeletebutton type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Region</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="updateRegion()" autocomplete="off">
+                    <input type="text" formControlName="name" placeholder="Region name">
+                    <br />
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
@@ -33,7 +54,7 @@
         <tr *ngFor="let item of regions;">
             <td>{{item.name}}</td>
             <td class="actions">
-                <a class="a-update" ><i class="fas fa-edit"></i></a>
+                <a class="a-update" (click)="updateForm(item)" data-toggle="modal" data-target="#myUpdateModal"><i class="fas fa-edit"></i></a>
                 <a class="a-delete" (click)="deleteRegion(item.id)"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>

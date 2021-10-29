@@ -10,20 +10,22 @@ import { RegionService } from '../services/region/region.service';
 })
 export class CountriesComponent implements OnInit {
 
-  countries:any=[];
-  regions:any=[];
+  countries: any = [];
+  regions: any = [];
   selectedValue = null;
 
   @ViewChild('closebutton') closebutton: any;
+  @ViewChild('closedeletebutton') closedeletebutton: any;
 
-  constructor(private countryService: CountriesService, private regionService:RegionService, public fb: FormBuilder) { }
+  constructor(private countryService: CountriesService, private regionService: RegionService, public fb: FormBuilder) { }
 
   registrationForm = this.fb.group({
+    countryId: [''],
     name: [''],
     region: ['', [Validators.required]]
   })
 
-  changeRegion(c:any) {
+  changeRegion(c: any) {
     this.region?.setValue(c.target.value, {
       onlySelf: true
     })
@@ -52,19 +54,39 @@ export class CountriesComponent implements OnInit {
 
   addCountry() {
     this.closebutton.nativeElement.click();
-      if (!this.registrationForm.valid) {
-        console.log("error")
-      } else {
-        this.countryService.addCountry(this.registrationForm.value).subscribe((data: any) => {
-          this.countries.push(data);
-        })
-      }
+    if (!this.registrationForm.valid) {
+      console.log("error")
+    } else {
+      this.countryService.addCountry(this.registrationForm.value).subscribe((data: any) => {
+        this.countries.push(data);
+      })
+    }
+    this.registrationForm.reset();
   }
 
-  deleteCountry(id:any) {
+  updateCountry() {
+    this.closedeletebutton.nativeElement.click();
+    if (!this.registrationForm.valid) {
+      console.log("error")
+    } else {
+      this.countryService.updateCountry(this.registrationForm.value).subscribe((data: any) => {
+        this.countries = this.countries.filter((item: any) => item.countryId != data.countryId);
+        this.countries.push(data);
+      })
+    }
+    this.registrationForm.reset();
+  }
+
+  deleteCountry(id: any) {
     this.countryService.deleteCountry(id).subscribe((data) => {
-      this.countries = this.countries.filter((item:any) => item.countryId != id);
+      this.countries = this.countries.filter((item: any) => item.countryId != id);
     })
+  }
+
+  updateForm(country: any) {
+    this.registrationForm.get("countryId")?.setValue(country.countryId);
+    this.registrationForm.get("name")?.setValue(country.name);
+    this.registrationForm.get("region")?.setValue(country.region.id);
   }
 
 }

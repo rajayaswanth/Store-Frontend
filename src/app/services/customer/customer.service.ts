@@ -23,6 +23,12 @@ export class CustomerService {
     return this.httpClient.post(this.getCustomerUrl, body, { 'headers': this.headers });
   }
 
+  public updateCustomer(requestBody:any) {
+    this.headers.set("content-type","application/json");
+    const body = requestBody;
+    return this.httpClient.put(this.getCustomerUrl, body, { 'headers': this.headers });
+  }
+
   public deleteCustomer(id:any) {
     this.headers.set("content-type","application/json");
     return this.httpClient.delete(this.deleteCustomerUrl+id, {responseType: 'text', 'headers': this.headers });

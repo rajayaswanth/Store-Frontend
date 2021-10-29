@@ -23,6 +23,12 @@ export class CurrencyService {
     return this.httpClient.post(this.getCurrencyUrl, body, { 'headers': this.headers });
   }
 
+  public updateCurrency(requestBody:any){
+    this.headers.set("content-type","application/json");
+    const body = requestBody;
+    return this.httpClient.put(this.getCurrencyUrl, body, { 'headers': this.headers });
+  }
+
   public deleteRegion(id:any) {
     this.headers.set("content-type","application/json");
     return this.httpClient.delete(this.deleteCurrencyUrl+id, { responseType: 'text', 'headers': this.headers });
