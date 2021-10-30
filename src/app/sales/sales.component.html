@@ -10,18 +10,88 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Sale</h4>
+                <button #closebutton type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Sales</h4>
             </div>
             <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="addSales()" autocomplete="off">
+                    <input type="text" formControlName="salesChannel" placeholder="Sales Channel">
+                    <br />
+                    <input type="text" formControlName="orderNumber" placeholder="Order Number">
+                    <br />
+                    <select (change)="changeProduct($event)" formControlName="product">
+                        <option value="">Choose Product</option>
+                        <option *ngFor="let p of products" [value]="p.id">{{p.name}}</option>
+                    </select>
+                    <br />
+                    <select (change)="changeCustomer($event)" formControlName="customer">
+                        <option value="">Choose Customer</option>
+                        <option *ngFor="let c of customers" [value]="c.id">{{c.firstName}} {{c.lastName}}</option>
+                    </select>
+                    <br />
+                    <select (change)="changeCurrency($event)" formControlName="currency">
+                        <option value="">Choose Currency</option>
+                        <option *ngFor="let c of currencies" [value]="c.id">{{c.name}}</option>
+                    </select>
+                    <br />
+                    <input type="number" formControlName="netAmount" placeholder="Net Amount">
+                    <br />
+                    <input type="number" formControlName="tax" placeholder="Tax">
+                    <br />
+                    <input type="number" formControlName="shippingCost" placeholder="Shipping Cost">
+                    <br />
+                    <input type="number" formControlName="grossAmount" placeholder="Gross Amount">
+                    <br />
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
             </div>
         </div>
 
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myUpdateModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button #closedeletebutton type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Sales</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form" [formGroup]="registrationForm" (ngSubmit)="updateSales()" autocomplete="off">
+                    <input type="text" formControlName="salesChannel" placeholder="Sales Channel">
+                    <br />
+                    <input type="text" formControlName="orderNumber" placeholder="Order Number">
+                    <br />
+                    <select (change)="changeProduct($event)" formControlName="product">
+                        <option value="">Choose Product</option>
+                        <option *ngFor="let p of products" [value]="p.id">{{p.name}}</option>
+                    </select>
+                    <br />
+                    <select (change)="changeCustomer($event)" formControlName="customer">
+                        <option value="">Choose Customer</option>
+                        <option *ngFor="let c of customers" [value]="c.id">{{c.firstName}} {{c.lastName}}</option>
+                    </select>
+                    <br />
+                    <select (change)="changeCurrency($event)" formControlName="currency">
+                        <option value="">Choose Currency</option>
+                        <option *ngFor="let c of currencies" [value]="c.id">{{c.name}}</option>
+                    </select>
+                    <br />
+                    <input type="number" formControlName="netAmount" placeholder="Net Amount">
+                    <br />
+                    <input type="number" formControlName="tax" placeholder="Tax">
+                    <br />
+                    <input type="number" formControlName="shippingCost" placeholder="Shipping Cost">
+                    <br />
+                    <input type="number" formControlName="grossAmount" placeholder="Gross Amount">
+                    <br />
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <section class="table-body">
@@ -49,8 +119,8 @@
             <td>{{item.shippingCost}}</td>
             <td>{{item.grossAmount}}</td>
             <td class="actions">
-                <i class="fas fa-edit"></i>
-                <i class="fas fa-trash-alt"></i>
+                <a class="a-update" (click)="updateForm(item)" data-toggle="modal" data-target="#myUpdateModal"><i class="fas fa-edit"></i></a>
+                <a class="a-delete" (click)="deleteSales(item.id)"><i class="fas fa-trash-alt"></i></a>
             </td>
         </tr>
     </table>

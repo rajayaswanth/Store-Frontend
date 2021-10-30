@@ -35,3 +35,20 @@ tr:nth-child(even) {
 .actions i {
     margin: 0px 10%;
 }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.a-delete {
+    color: red;
+    cursor: pointer;
+}
+
+.a-update {
+    color: blue;
+    cursor: pointer;
+}

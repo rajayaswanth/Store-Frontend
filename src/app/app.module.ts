@@ -15,6 +15,10 @@ import { CustomersComponent } from './customers/customers.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { StoreComponent } from './store/store.component';
 import { AuthGuard } from './services/AuthGuard';
+import {DropdownModule} from 'primeng/dropdown';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SalesAddComponent } from './sales-add/sales-add.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,19 @@ import { AuthGuard } from './services/AuthGuard';
     RegionComponent,
     CustomersComponent,
     AuthenticateComponent,
-    StoreComponent
+    StoreComponent,
+    SalesAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MultiSelectModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
