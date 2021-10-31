@@ -26,3 +26,8 @@ span {
     display: flex;
     margin-top: 2%;
 }
+
+form input,select {
+    padding: 1%;
+    width: 20% !important;
+}
